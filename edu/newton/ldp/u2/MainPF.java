@@ -7,8 +7,10 @@ public class MainPF {
 		var pf1 = new PessoaFisica();
 		
 		pf1.nomeCompleto = "Sheila Menezes dos Santos";
+		pf1.dataNasc = "2001-02-06";
 
 		pf1.getSobrenome();
+		pf1.getIdade();
 	}
 
 }
