@@ -19,7 +19,7 @@ public class ContadorFrequenciaLetras {
 		String ma = "", saida = "";
 		
 		//entrada
-		String entrada = JOptionPane.showInputDialog("Insira uma frase: ");
+		String entrada = JOptionPane.showInputDialog("Insira uma frase: ").toLowerCase();
 		
 		//processamento
 		String[] caracteres = entrada.split("");
