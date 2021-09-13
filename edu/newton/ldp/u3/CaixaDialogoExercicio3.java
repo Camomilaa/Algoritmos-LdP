@@ -23,15 +23,22 @@ public class CaixaDialogoExercicio3 {
 			//se não for numero
 			try {	
 				num = Integer.parseInt(n);
+				
+				if (num < 0) {
+					throw new RuntimeException("Valor negativo: " + num);
+				}
+				
 				success = true;
 			} catch (NumberFormatException ex) {
 				JOptionPane.showMessageDialog(null, "Valor inválido: " + n, "ERRO!", JOptionPane.ERROR_MESSAGE);
+			} catch (RuntimeException ex) {
+				JOptionPane.showMessageDialog(null, ex.getMessage(), "ERRO!!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
 		//processamento
 		for(int i = 0; i <= 100; i = i + num) {
-			saida = saida + i + " ";
+			saida = saida + i + "\n";
 		}
 		
 		//saida
