@@ -119,22 +119,27 @@ public class Exerc2LayoutConversorTemp {
 					JOptionPane.showMessageDialog(frame, "Por favor, Selecione um tipo.");
 					return;
 				}
-	        					
-				System.out.println("Temperatura informada: " + entrada.getText() + " " + selected);
-				
-				// F = C * 1.8 + 32
-				float f = Float.parseFloat(entrada.getText()) * 1.8f + 32;
-				
-				// C = (F-32) / 1.8
-				float c = (Float.parseFloat(entrada.getText()) - 32) / 1.8f;
-				
-				if (selected.equals("Celsius")) {
-					resposta.setText(f + " Fahrenheit");
-				} else {
-					resposta.setText(c + " Celsius");
+				try {
+					System.out.println("Temperatura informada: " + entrada.getText() + " " + selected);
+					
+					// F = C * 1.8 + 32
+					float f = Float.parseFloat(entrada.getText()) * 1.8f + 32;
+					
+					// C = (F-32) / 1.8
+					float c = (Float.parseFloat(entrada.getText()) - 32) / 1.8f;
+					
+					if (selected.equals("Celsius")) {
+						resposta.setText(f + " Fahrenheit");
+					} else {
+						resposta.setText(c + " Celsius");
+					}
+					
+					System.out.println(resposta.getText());
+
+				} catch(NumberFormatException ex) {
+					JOptionPane.showMessageDialog(frame, "Por favor, informe uma temperatura válida!", "ERRO!", JOptionPane.ERROR_MESSAGE);
 				}
-				
-				System.out.println(resposta.getText());
+	        									
 			}
 		});
         
