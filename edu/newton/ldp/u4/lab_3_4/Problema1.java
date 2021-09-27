@@ -215,12 +215,21 @@ public class Problema1 {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					int c = Integer.parseInt(nun.getText());
-					cadastro.remove(c-1);
-					campoNome.setText(cadastro.get(c-1).nome);
-					campoCpf.setText(cadastro.get(c-1).cpf);
-					campoEmail.setText(cadastro.get(c-1).email);
-					campoTel.setText(cadastro.get(c-1).telefone);
-					campoData.setText(cadastro.get(c-1).data);
+					try {
+						cadastro.remove(c-1);
+						campoNome.setText(cadastro.get(c-1).nome);
+						campoCpf.setText(cadastro.get(c-1).cpf);
+						campoEmail.setText(cadastro.get(c-1).email);
+						campoTel.setText(cadastro.get(c-1).telefone);
+						campoData.setText(cadastro.get(c-1).data);
+					} catch(IndexOutOfBoundsException a) {
+						campoNome.setText("");
+						campoCpf.setText("");
+						campoEmail.setText("");
+						campoTel.setText("");
+						campoData.setText("");
+					}
+					
 				}
 			});
 			
