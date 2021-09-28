@@ -222,6 +222,7 @@ public class Problema1 {
 						campoEmail.setText(cadastro.get(c-1).email);
 						campoTel.setText(cadastro.get(c-1).telefone);
 						campoData.setText(cadastro.get(c-1).data);
+						cont.setText("Cadastro e listagem (" + cadastro.size() + ")");
 					} catch(IndexOutOfBoundsException a) {
 						campoNome.setText("");
 						campoCpf.setText("");
