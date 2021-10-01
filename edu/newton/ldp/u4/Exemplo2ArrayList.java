@@ -2,8 +2,6 @@ package edu.newton.ldp.u4;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 public class Exemplo2ArrayList {
 	
 	/**
@@ -18,7 +16,12 @@ public class Exemplo2ArrayList {
 	 */
 	
 	private static int buscaSequencial(ArrayList<String> estados, String estado) {
-		
+		for(int i = 0; i < estados.size(); i++) {
+			var item = estados.get(i);
+			if(item == estado) {
+				return i;
+			}
+		}
 		return -1;
 	}
 	
@@ -53,7 +56,8 @@ public class Exemplo2ArrayList {
 		}
 		
 		System.out.println("Minas Gerais: " + estados.indexOf("Minas Gerais"));
-		
+		var achei = buscaSequencial(estados, "Santa Catarina");
+		System.out.println("O indice do estado de Santa Catarina é: " + achei);
 		
 		estados.clear();
 		for (var estado: estados) {
