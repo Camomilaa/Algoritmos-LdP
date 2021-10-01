@@ -189,6 +189,7 @@ public class Problema1 {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					int c = Integer.parseInt(nun.getText());
+					int m = cadastro.size();
 					try {
 						campoNome.setText(cadastro.get(c).nome);
 						campoCpf.setText(cadastro.get(c).cpf);
@@ -202,7 +203,7 @@ public class Problema1 {
 						campoEmail.setText("");
 						campoTel.setText("");
 						campoData.setText("");
-						nun.setText(Integer.toString(c+1));
+						nun.setText(Integer.toString(m+1));
 					}
 					
 				}
