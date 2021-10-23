@@ -73,6 +73,7 @@ public class Problema3 {
 	public static void main(String[] args) {
 		//declaração de variáveis
 		String cpf;
+		int erro = 0;
 		
 		//entrada
 		cpf = JOptionPane.showInputDialog(null, "Insira o cpf para a validação: ");
@@ -83,6 +84,11 @@ public class Problema3 {
 		}catch(ValidacaoPrimeiroDigitoException | ValidacaoSegundoDigitoException | NumeroCaracteresInvalidoException | 
 				CaractereNaoNumericoException | CPFRepetidoException ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage());
+			erro++;
+		} finally {
+			if(erro == 0) {
+				JOptionPane.showMessageDialog(null, "CPF validado com sucesso!");
+			}
 		}
 	}
 

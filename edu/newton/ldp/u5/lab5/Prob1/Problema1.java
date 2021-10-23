@@ -3,39 +3,58 @@ package edu.newton.ldp.u5.lab5.Prob1;
 import javax.swing.JOptionPane;
 
 public class Problema1 {
-	public static void main(String[] args) {
-		//Declaração de variáveis
-		String q = "", n = "a", saida = " ";
-		int qntd = 0, num = 0, erro = 0, acerto = 0;
-		
-		//Quantidade de entradas
-		try {
-			q = JOptionPane.showInputDialog(null, "Quantos números deseja digitar?");
-			qntd = Integer.parseInt(q);
-		}catch(NumberFormatException ex) {
-			JOptionPane.showMessageDialog(null, "Erro! Insira uma quantidade válida de números.");
+	
+	public static int validar(String q) throws QuantidadeVaziaException, QuantidadeNaoNumericaException{
+		//Conferindo se está vazio
+		if(q.isBlank() || q.isEmpty()) {
+			throw new QuantidadeVaziaException();
 		}
-		int conjunto[] = new int[qntd];
 		
-		//entrada e processamento
-		for(int c = 0; c < qntd; c++) {
-			try {
+		//conferindo se é possivel transformar string em int
+		boolean digito = q.matches("[+-]?\\d*(\\.\\d+)?");
+		if(digito == false) {
+			throw new QuantidadeNaoNumericaException();
+		}
+		int qntd = Integer.parseInt(q);
+		return qntd;
+	}
+	
+	public static void validarNegativo(int qntd) throws NumeroNegativoException{
+		//conferindo se o valor é negativo
+		if(qntd < 0) {
+			throw new NumeroNegativoException();
+		}
+	}
+	
+	public static void main(String[] args) {
+		//declaração de variáveis
+		String q = "", n = "a", saida = " ";
+		int qntd = 0, num = 0, erro = 0;
+		
+		//processamento
+		try {
+			//tamanho do array
+			q = JOptionPane.showInputDialog(null, "Quantos números deseja digitar?");
+			qntd = validar(q);
+			validarNegativo(qntd);
+			
+			//armazenamento dos numeros
+			int conjunto[] = new int[qntd];
+			for(int c = 0; c < qntd; c++) {
 				n = JOptionPane.showInputDialog(null, "Insira um número:");
-				num = Integer.parseInt(n);
+				num = validar(n);
 				conjunto[c] = num;
 				saida = saida + num + " ";
-			} catch(NumberFormatException a) {
-				JOptionPane.showMessageDialog(null, "Caráctere inserido não é um número inteiro!");
-				erro++;
-				break;
-			}finally {
-				acerto++;
-				if(erro == 0 && acerto == qntd) {
-					JOptionPane.showMessageDialog(null, "Saída: " + saida);
-				}
+			}
+			
+		} catch(QuantidadeVaziaException | QuantidadeNaoNumericaException | NumeroNegativoException ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+			erro++;
+		} finally {
+			if(erro == 0) {
+				JOptionPane.showMessageDialog(null, "Saída: " + saida);
 			}
 		}
-		
 
 	}
 
