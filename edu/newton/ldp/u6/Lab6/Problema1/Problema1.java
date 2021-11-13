@@ -16,16 +16,17 @@ public class Problema1 {
 
 	public static void main(String[] args) throws ArquivoNaoEncontradoException, IOException{
 		Scanner sc = new Scanner(System.in);
+		//Caminho que leva a pasta principal e vai ser usada como base para contruir novos caminhos
 		var caminhoBasico = "C:\\Users\\Gadrit\\Documents\\Newton Paiva\\3 Semestre\\Linguagens de Programação\\eclipse\\2021_LP\\src\\edu\\newton\\ldp\\u6\\Lab6\\Problema1";
 		
 		//Declaração de variáveis
 		boolean arquivoAchado = false, diretorioAchado = false, erro = false;
 		int c;
 		
-		//diretorio inicial
+		//diretorio inicial - Pasta onde se encontra o arquivo a ser movido
 		var caminhoInicial = "C:\\Users\\Gadrit\\Documents\\Newton Paiva\\3 Semestre\\Linguagens de Programação\\eclipse\\2021_LP\\src\\edu\\newton\\ldp\\u6\\Lab6\\Problema1\\D1";
 		
-		//diretorio final
+		//diretorio final - Pasta onde o arquivo vai ser movido
 		System.out.println("Insira o nome do diretório que deseja colar o arquivo:");
 		var nomeDirFinal = sc.nextLine();
 		
