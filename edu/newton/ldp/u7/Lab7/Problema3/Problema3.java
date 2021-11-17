@@ -2,21 +2,19 @@ package edu.newton.ldp.u7.Lab7.Problema3;
 
 public class Problema3 {
 	
-	public static String inversao(String frase, String fraseInvertida) {
+	public static String inversao(String frase) {
 		
-		if(frase.length() == 0) {
-			return fraseInvertida;
+		if(frase.length() == 1) {
+			return String.valueOf(frase.charAt(0)); //r
 		}
-		
-		var f = frase.charAt(frase.length() - 1); //a
-		fraseInvertida = fraseInvertida +  f; // adicionando ultima letra a string
-		var i = frase.substring(0, frase.length() - 1); //sheil
-		return inversao(i, fraseInvertida); //mandando o resto da frase, para tirar a ultima
+		var restoFrase = frase.substring(1);
+		var primLetra = frase.charAt(0);
+		return inversao(restoFrase) + primLetra; //er
 	}
 
 	public static void main(String[] args) {
-		String frase = "No massacre, floresço, como uma flor no amanhecer", fraseInvertida = "";
-		var r = inversao(frase, fraseInvertida);
+		String frase = "No massacre, floresço, como uma flor no amanhecer";
+		var r = inversao(frase);
 		System.out.println(r);
 
 	}
